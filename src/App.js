@@ -1,24 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { Footer } from "./components/Footer";
+import Home from "./components/Home";
+import Movies from "./components/Movies";
+import Nav from "./components/Nav";
+import Render from "./components/Render";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MoviesInfo from "./components/MoviesInfo";
 
 function App() {
+  const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // Handle search
+  const handleSearch = async (query) => {
+    if (!query.trim()) {
+      setFilteredMovies(); // show random movies if search empty
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `https://www.omdbapi.com/?s=${encodeURIComponent(
+          query
+        )}&apikey=80515a25`
+      );
+      const data = await res.json();
+
+      setFilteredMovies(data.Search || []);
+    } catch (err) {
+      console.error(err);
+      setFilteredMovies([]);
+    }
+    setLoading(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Nav onSearch={handleSearch} />
+      <Routes>
+        <Route
+          path="/"
+          element={<Home movies={filteredMovies} loading={loading} />}
+        />
+        <Route
+          path="/movies"
+          element={
+            <Movies
+              movies={movies}
+              filteredMovies={filteredMovies}
+              loading={loading}
+            />
+          }
+        />
+        <Route path="/movies/:imdbID" element = {<MoviesInfo />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
