@@ -42,7 +42,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home movies={filteredMovies} loading={loading} />}
+          element={<Home />}
         />
         <Route
           path="/movies"
