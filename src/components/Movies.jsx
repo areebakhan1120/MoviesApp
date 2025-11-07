@@ -2,25 +2,43 @@ import React, { useEffect, useState } from "react";
 import { Render } from "./Render";
 import { Link } from "react-router-dom";
 
+
 const Movies = ({ filteredMovies = [] }) => {
   const [sortMovies, setSortMovies] = useState([]);
   const { movies, loading } = Render();
 
-  const displayMovies = filteredMovies.length > 0 ? filteredMovies : movies;
+
+  const displayMovies =
+    sortMovies.length > 0
+      ? sortMovies
+      : filteredMovies.length > 0
+      ? filteredMovies
+      : movies;
 
   function sortingMovies(sorting) {
-    console.log(sorting);
+    const baseMovies =
+      filteredMovies.length > 0 ? filteredMovies : movies;
+
+    let sorted = [];
 
     if (sorting === "LOW_TO_HIGH") {
-      setSortMovies(movies.sort((a, b) => a.Year - b.Year));
+      sorted = [...baseMovies].sort((a, b) => a.Year - b.Year);
+    } else if (sorting === "HIGH_TO_LOW") {
+      sorted = [...baseMovies].sort((a, b) => b.Year - a.Year);
+    } else if (sorting === "A-Z") {
+      sorted = [...baseMovies].sort((a, b) =>
+        a.Title.localeCompare(b.Title)
+      );
     }
-    if (sorting === "HIGH_TO_LOW") {
-      setSortMovies(movies.sort((a, b) => b.Year - a.Year));
-    }
-    if (sorting === "A-Z") {
-      setSortMovies(movies.sort((a, b) => a.Title.localeCompare(b.Title)));
-    }
+
+    setSortMovies(sorted);
   }
+
+  useEffect(() => {
+    // Reset sorting whenever filters change
+    setSortMovies([]);
+  }, [filteredMovies]);
+
 
   return (
     <div className="movies__container">
@@ -54,11 +72,11 @@ const Movies = ({ filteredMovies = [] }) => {
         </div>
       ) : (
         <div className="movies__list">
-          {displayMovies.map((movie, index) => (
+          {displayMovies.map((movie) => (
             <Link
               to={`/movies/${movie.imdbID}`}
               className="movie"
-              key={`${movie.imdbID}-${index}`}
+              key={`${movie.imdbID}`}
             >
               <div className="movie__poster">
                 <img src={movie.Poster} alt={movie.Title} />

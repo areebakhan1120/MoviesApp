@@ -22,7 +22,7 @@ export const Footer = () => {
                 </Link>
               </li>
             </ul>
-            <p class="footer__text">
+            <p className="footer__text">
   © Copyright 2025 | All rights reserved
 </p>
     </footer>
