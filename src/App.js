@@ -41,7 +41,7 @@ function App() {
       <Nav onSearch={handleSearch} />
       <Routes>
         <Route
-          path="/"
+        index
           element={<Home />}
         />
         <Route
