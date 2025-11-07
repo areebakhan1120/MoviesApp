@@ -15,7 +15,7 @@ function App() {
   // Handle search
   const handleSearch = async (query) => {
     if (!query.trim()) {
-      setFilteredMovies(); // show random movies if search empty
+      setFilteredMovies(); 
       return;
     }
 
