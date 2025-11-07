@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/MoviesApp/static/css/main.43310bf2.css",
+    "main.js": "/MoviesApp/static/js/main.3f1b3bfa.js",
+    "static/js/453.7ccf9fd3.chunk.js": "/MoviesApp/static/js/453.7ccf9fd3.chunk.js",
+    "static/media/HomeImg.png": "/MoviesApp/static/media/HomeImg.5151a870115b79e3ef57.png",
+    "static/media/desktop-wallpaper-kodi-posted-by-sarah-walker.jpg": "/MoviesApp/static/media/desktop-wallpaper-kodi-posted-by-sarah-walker.5c173fd3e085b806e9d8.jpg",
+    "index.html": "/MoviesApp/index.html",
+    "main.43310bf2.css.map": "/MoviesApp/static/css/main.43310bf2.css.map",
+    "main.3f1b3bfa.js.map": "/MoviesApp/static/js/main.3f1b3bfa.js.map",
+    "453.7ccf9fd3.chunk.js.map": "/MoviesApp/static/js/453.7ccf9fd3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.43310bf2.css",
+    "static/js/main.3f1b3bfa.js"
+  ]
+}
