@@ -1,6 +1,5 @@
 {
   "name": "movies-app",
-    "homepage": "https://areebakhan1120.github.io/MoviesApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
