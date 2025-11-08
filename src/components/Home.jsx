@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HomeImg from '../assets/HomeImg.png'
 
 const Home = () => {
+
+useEffect(() => {
+  const img = new Image()
+  img.src= HomeImg
+},[])
+
   return (
 <div className="container">
     <div className="row">
