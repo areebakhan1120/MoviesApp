@@ -10,7 +10,7 @@ const Overlay = ({onSearch})=> {
 const [searchId, setSearchId] = useState("")
 const navigate = useNavigate()
 
-  const debouncedSearch = useCallback(
+  const debouncedSearch = useCallback(() =>
     debounce((query) => {
       if (query.trim() !== "") {
         onSearch(query);
