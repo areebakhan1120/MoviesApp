@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Footer } from "./components/Footer";
 import Home from "./components/Home";
 import Movies from "./components/Movies";
 import Nav from "./components/Nav";
-import Render from "./components/Render";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesInfo from "./components/MoviesInfo";
 
@@ -34,6 +33,7 @@ function App() {
       setFilteredMovies([]);
     }
     setLoading(false);
+    setMovies ("")
   };
 
   return (

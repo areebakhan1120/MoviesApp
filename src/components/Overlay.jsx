@@ -17,7 +17,7 @@ const navigate = useNavigate()
         navigate("/movies");
       }
     }, 500), // 500ms delay
-    []
+    [onSearch, navigate]
   );
 
   const handleChange = (event) => {
